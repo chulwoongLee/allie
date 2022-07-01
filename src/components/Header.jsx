@@ -5,12 +5,7 @@ export default function Header(props) {
   useEffect(() => {
     const bodySize = document.body.scrollHeight;
     window.addEventListener("scroll", (e) => {
-      console.log("시작");
-      console.log(bodySize);
-
-      console.log(100 * window.scrollY);
-      console.log("종료");
-      setLeftSize((100 * window.scrollY) / bodySize);
+      setLeftSize((100 * window.scrollY) / (bodySize - 900));
     });
   }, []);
   return (
