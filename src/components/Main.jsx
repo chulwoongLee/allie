@@ -14,6 +14,35 @@ export default function Main() {
   const step4Ref = useRef(null);
   const step5Ref = useRef(null);
   useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      if (window.scrollY > 3239) {
+        setPickContent(3);
+      } else if (window.scrollY > 2159) {
+        setPickContent(2);
+      } else if (window.scrollY > 1079) {
+        setPickContent(1);
+      } else {
+        setPickContent(0);
+      }
+    });
+  }, []);
+  function fncSlideComponent(index) {
+    if (index === 0) {
+      setPickContent(0);
+      step1Ref.current.scrollIntoView({ behavior: "smooth" });
+    } else if (index === 1) {
+      setPickContent(1);
+      step2Ref.current.scrollIntoView({ behavior: "smooth" });
+    } else if (index === 2) {
+      setPickContent(2);
+      step3Ref.current.scrollIntoView({ behavior: "smooth" });
+    } else if (index === 3) {
+      setPickContent(3);
+      step4Ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+  useEffect(() => {
+    /*
     if (pickContent === 0) {
       if (step1Ref.current) {
         console.log("맞는가~?");
@@ -32,6 +61,7 @@ export default function Main() {
     } else if (pickContent === 4) {
       step5Ref.current.scrollIntoView({ behavior: "smooth" });
     }
+    */
   }, [pickContent]);
   return (
     <article
@@ -45,7 +75,7 @@ export default function Main() {
         position: "relative",
       }}
     >
-      <Header pickContent={pickContent} setPickContent={setPickContent} />
+      <Header pickContent={pickContent} fncSlideComponent={fncSlideComponent} />
       <div style={{ width: "100%" }} ref={step1Ref}>
         <Step1 />
       </div>

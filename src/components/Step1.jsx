@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import step1_main from "src/img/step1/step1_main.png";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 export default function Step1() {
   return (
     <article
@@ -8,6 +10,7 @@ export default function Step1() {
         alignItems: "center",
         justifyContent: "center",
         display: "flex",
+        flexDirection: "column",
         backgroundImage: `URL(${step1_main})`,
       }}
     >
@@ -59,6 +62,86 @@ export default function Step1() {
           </div>
         </section>
       </section>
+      <section style={{ marginBottom: 40 }}>
+        <div
+          style={{
+            border: "solid 2.5px #fff",
+            width: 31,
+            height: 42,
+            borderRadius: 14,
+            alignItems: "center",
+            justifyContent: "center",
+            display: "flex",
+          }}
+        >
+          <Wheel />
+        </div>
+        <div
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            display: "flex",
+          }}
+        >
+          <DoubleArrowIcon
+            style={{
+              marginTop: 7,
+              transform: "rotate(90deg)",
+              color: "#fff",
+              opacity: 0.5,
+            }}
+          />
+        </div>
+      </section>
+    </article>
+  );
+}
+
+function Wheel() {
+  const [status, setStatus] = useState(0);
+  let fakeStatus = 0;
+  let wheelInterval = null;
+  useEffect(() => {
+    wheelInterval = setInterval(() => {
+      fncChangeStatus();
+    }, 500);
+    return () => {
+      clearInterval(wheelInterval);
+    };
+  }, []);
+  function fncChangeStatus() {
+    if (fakeStatus > 3) {
+      fakeStatus = 0;
+    } else {
+      fakeStatus = fakeStatus + 1;
+    }
+    setStatus(fakeStatus);
+  }
+  return (
+    <article>
+      <div
+        style={{
+          width: 5,
+          height: fakeStatus > 2 ? 60 : fakeStatus > 1 ? 20 : 5,
+          transition: "all 0.4s",
+        }}
+      ></div>
+      <div
+        style={{
+          width: 5,
+          height: status === 2 ? 15 : 5,
+          backgroundColor: "#fff",
+          opacity: status === 0 || status === 4 ? 0 : 1,
+          transition: "all 0.4s",
+        }}
+      ></div>
+      <div
+        style={{
+          width: 5,
+          height: status > 1 ? 5 : 20,
+          transition: "all 0.4s",
+        }}
+      ></div>
     </article>
   );
 }
