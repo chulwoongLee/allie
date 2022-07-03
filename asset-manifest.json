@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/allie/static/css/main.0d332469.css",
-    "main.js": "/allie/static/js/main.059949e4.js",
+    "main.js": "/allie/static/js/main.432ac58c.js",
     "static/js/27.3625de93.chunk.js": "/allie/static/js/27.3625de93.chunk.js",
     "static/media/step1_main.png": "/allie/static/media/step1_main.c7d8477a20acc18973f3.png",
     "static/media/step3Bg.png": "/allie/static/media/step3Bg.9a83eec6281b178ed527.png",
@@ -27,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.0d332469.css",
-    "static/js/main.059949e4.js"
+    "static/js/main.432ac58c.js"
   ]
 }
